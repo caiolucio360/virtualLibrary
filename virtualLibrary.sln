@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibrary.API", "virtualLibrary\VirtualLibrary.API.csproj", "{B376B830-544B-4234-9543-A453388C217D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualLibrary.Models", "VirtualLibrary.Models\VirtualLibrary.Models.csproj", "{8CD852FB-72DC-46BE-8CB5-FD632B6B9F73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLibrary.Models", "VirtualLibrary.Models\VirtualLibrary.Models.csproj", "{8CD852FB-72DC-46BE-8CB5-FD632B6B9F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViruralLibrary.Repository", "ViruralLibrary.Repository\ViruralLibrary.Repository.csproj", "{722CA7E3-9285-4F0E-82CD-8AD44A230B3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViruralLibrary.Repository", "ViruralLibrary.Repository\ViruralLibrary.Repository.csproj", "{722CA7E3-9285-4F0E-82CD-8AD44A230B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualLibrary.API", "VirtualLibrary.Api\VirtualLibrary.API.csproj", "{80CFE0CE-8E7C-416D-A75B-96C33CE65124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B376B830-544B-4234-9543-A453388C217D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B376B830-544B-4234-9543-A453388C217D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B376B830-544B-4234-9543-A453388C217D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B376B830-544B-4234-9543-A453388C217D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CD852FB-72DC-46BE-8CB5-FD632B6B9F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CD852FB-72DC-46BE-8CB5-FD632B6B9F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CD852FB-72DC-46BE-8CB5-FD632B6B9F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{722CA7E3-9285-4F0E-82CD-8AD44A230B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{722CA7E3-9285-4F0E-82CD-8AD44A230B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{722CA7E3-9285-4F0E-82CD-8AD44A230B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CFE0CE-8E7C-416D-A75B-96C33CE65124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CFE0CE-8E7C-416D-A75B-96C33CE65124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CFE0CE-8E7C-416D-A75B-96C33CE65124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CFE0CE-8E7C-416D-A75B-96C33CE65124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
