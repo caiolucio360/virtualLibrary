@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VirtualLibrary.Models;
+using VirtualLibrary.Repository.Data;
 
 namespace virtualLibrary.Controllers
 {
@@ -12,28 +13,34 @@ namespace virtualLibrary.Controllers
     [Route("[controller]")]
     public class BooksController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        public readonly DataContext _context;
+        public BooksController(DataContext context)
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<BooksController> _logger;
-
-        public BooksController(ILogger<BooksController> logger)
-        {
-            _logger = logger;
+            _context = context;
         }
+       
+        //[HttpGet]
+        //public string Get(string nome,string idade, string blabla)
+        //{
+        //    return $"Meu nome: {nome}, /n idade: {idade}";
+        //}
+
+        //[HttpPost]
+        //public string Post()
+        //{
+        //    return "Exemplo de Post";
+        //}
 
         [HttpGet]
-        public string Get(string nome,string idade, string blabla)
+        public IEnumerable<Book> Get()
         {
-            return $"Meu nome: {nome}, /n idade: {idade}";
+            return _context.Books;
         }
 
-        [HttpPost]
-        public string Post()
+        [HttpGet("{id}")]
+        public IEnumerable<Book> Get(Guid id)
         {
-            return "Exemplo de Post";
+            return _context.Books.Where(Book => Book.Id == id);
         }
     }
 }
