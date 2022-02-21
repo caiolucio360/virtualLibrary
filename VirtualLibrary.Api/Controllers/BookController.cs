@@ -19,18 +19,6 @@ namespace virtualLibrary.Controllers
             _context = context;
         }
        
-        //[HttpGet]
-        //public string Get(string nome,string idade, string blabla)
-        //{
-        //    return $"Meu nome: {nome}, /n idade: {idade}";
-        //}
-
-        //[HttpPost]
-        //public string Post()
-        //{
-        //    return "Exemplo de Post";
-        //}
-
         [HttpGet]
         public IEnumerable<Book> Get()
         {
