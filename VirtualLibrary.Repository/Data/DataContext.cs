@@ -9,7 +9,7 @@ namespace VirtualLibrary.Repository.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer("server");
+            optionBuilder.UseSqlServer("Data Source=CAIO-PC;DataBase=VirtualLibrary;Integrated Security=True");
         }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }

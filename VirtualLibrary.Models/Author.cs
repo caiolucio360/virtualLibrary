@@ -14,5 +14,6 @@ namespace VirtualLibrary.Models
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Number { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }
