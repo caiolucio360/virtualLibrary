@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualLibrary.Repository.Data;
 
 namespace VirtualLibrary.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220222200830_databaseOptimization2")]
+    partial class databaseOptimization2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,6 +29,9 @@ namespace VirtualLibrary.Repository.Migrations
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("BookId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -47,16 +52,44 @@ namespace VirtualLibrary.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BookId");
+
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e5774dd4-5f30-44ac-b7e8-9ab1ed49f995"),
+                            BirthDate = new DateTime(2008, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "caio@gmail.com",
+                            Gender = "Male",
+                            Name = "Caio",
+                            Number = "2625929829825"
+                        },
+                        new
+                        {
+                            Id = new Guid("0f2a0a22-f7b6-4c71-a1bb-d20c5caf81a2"),
+                            BirthDate = new DateTime(2005, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Fernanda@gmail.com",
+                            Gender = "Female",
+                            Name = "Fernanda",
+                            Number = "498749841984"
+                        },
+                        new
+                        {
+                            Id = new Guid("1e2bd0a0-1cea-445c-bd67-d69e3878eac6"),
+                            BirthDate = new DateTime(2002, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Gabriel@gmail.com",
+                            Gender = "Male",
+                            Name = "Gabriel",
+                            Number = "198493232312"
+                        });
                 });
 
             modelBuilder.Entity("VirtualLibrary.Models.Book", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("PublisherId")
@@ -71,8 +104,6 @@ namespace VirtualLibrary.Repository.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.HasIndex("PublisherId");
 
@@ -93,28 +124,44 @@ namespace VirtualLibrary.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publishers");
-                });
 
-            modelBuilder.Entity("VirtualLibrary.Models.Book", b =>
-                {
-                    b.HasOne("VirtualLibrary.Models.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VirtualLibrary.Models.Publisher", "Publisher")
-                        .WithMany()
-                        .HasForeignKey("PublisherId");
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Publisher");
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3eef9a14-d738-49c0-91d1-3cab845db8c3"),
+                            Name = "Nice Books"
+                        },
+                        new
+                        {
+                            Id = new Guid("c8dcaf61-9400-4907-866b-3f83f05361c4"),
+                            Name = "Grenn Books"
+                        },
+                        new
+                        {
+                            Id = new Guid("2ef886b9-f41e-460b-9cf8-6181f4bd6415"),
+                            Name = "Amazing Books"
+                        });
                 });
 
             modelBuilder.Entity("VirtualLibrary.Models.Author", b =>
                 {
-                    b.Navigation("Books");
+                    b.HasOne("VirtualLibrary.Models.Book", null)
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId");
+                });
+
+            modelBuilder.Entity("VirtualLibrary.Models.Book", b =>
+                {
+                    b.HasOne("VirtualLibrary.Models.Publisher", "Publisher")
+                        .WithMany()
+                        .HasForeignKey("PublisherId");
+
+                    b.Navigation("Publisher");
+                });
+
+            modelBuilder.Entity("VirtualLibrary.Models.Book", b =>
+                {
+                    b.Navigation("Authors");
                 });
 #pragma warning restore 612, 618
         }
